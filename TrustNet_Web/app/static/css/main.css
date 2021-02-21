@@ -1,0 +1,422 @@
+/* -----------------------------Navigation Bar------------------------- */
+.navigation-bar{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 56px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.youtube-logo{
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: red;
+    text-decoration: none;
+    margin-left: 100px;
+}
+.youtube-logo:hover{
+    color: red;
+    text-decoration: none;
+
+}
+.navigation-link{
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+}
+
+.navigation-link:hover{
+    color: black;
+    text-decoration: none;
+}
+
+/* -------------------------------Profile Page----------------- */
+
+.profile-cover{
+    height: 25% ;
+    width: 96%;
+    margin-left: 2%;
+    background-color: blue;
+}
+
+.user-details{
+    display:flex;
+    align-items: center;
+    margin-left: 20%;
+    margin-bottom: 10px;
+    margin-top:10px;
+}
+
+.user-profile-image{
+    width:100px; 
+    height: 100px; 
+    border-radius: 50%;
+}
+
+.user-profile-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+.user-profile-subscriber{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+}
+
+.update-account-form{
+    width: 40%; 
+    margin-left: 20%; 
+    background: #ffffff; 
+    padding: 10px 20px;   
+    border: 1px solid #dddddd; 
+    border-radius: 3px; 
+    margin-bottom: 20px;
+}
+
+/* -----------------------------Video view---------------------- */
+
+
+.video-view{
+    background-color: whitesmoke;
+    width: 1280px; 
+    max-height: 720px;
+    margin-left: 2%;
+    margin-top:20px;
+}
+
+.video-view-title{
+    font-size: 1.5rem;
+    margin-top:20px;
+    margin-left: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.video-view-user-details{
+    display:flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.video-view-user-image{
+    width:60px; 
+    height: 60px; 
+    border-radius: 50%;
+}
+
+.video-view-user-name{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+.video-view-user-name:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.video-view-subscriber{
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.video-view-tail-details{
+    display:flex;
+    flex-direction: row;
+}
+
+.video-view-views{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 16px;
+    margin-left: 2%;
+}
+
+.video-view-time{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.video-view-description{
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 2%;
+    max-width: 1280px;
+}
+.like-anonymous{
+    text-decoration: none;
+    color: black;
+    margin-left: 39vw;
+}
+
+.like-unlike-auth-user{
+    text-decoration: none;
+    color: black;
+    margin-left: 0.5vw;
+}
+
+.like-button:hover{
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.unlike-button:hover{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ----------------------------home page video view-------------------- */
+
+.home-page-videos{
+    display:flex;
+    flex-wrap: wrap;
+    min-height: 85%;
+}
+
+.home-video-box{
+    width: 22%;
+    max-width: 22%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.home-video-view{
+    background-color: whitesmoke;
+    max-width: 100%;
+    width: 100%;
+}
+
+.home-video-image-title{
+    display: flex;
+    flex-direction:row;
+    margin-top: 10px;
+}
+
+.home-video-user-image-box{
+    width:20%;
+    max-width: 20%;
+}
+
+.home-video-user-image{
+    width:80%;
+    height: 80%; 
+    border-radius: 50%;
+}
+
+.home-video-title-user{
+    width:80%;
+    max-width:80%;   
+}
+
+.home-video-title{
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    margin-top:0px;
+    margin-left: 5%;
+}
+
+.home-video-title:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.home-video-user-name{
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: grey;
+    margin-top:0px;
+    margin-left: 5%;
+}
+
+.home-video-user-name:hover{
+    text-decoration: none;
+    color: grey;
+}
+
+.home-video-tail-details{
+    display:flex;
+    flex-direction: row;
+}
+
+.home-video-views{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 14px;
+    margin-left: 24%;
+}
+
+.home-video-time{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* -----------------------------Account page video view-------------------------- */
+
+.account-page-videos{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 18%;
+}
+
+.account-video-box{
+    width: 18%;
+    max-width: 18%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+ 
+.account-video-view{
+    background-color: whitesmoke;
+    max-width: 100%;
+    width: 100%;
+}
+
+.account-video-title{
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    margin-top:0px;
+}
+
+.account-video-title:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.account-video-user-name{
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: grey;
+    margin-top:0px;
+}
+
+.account-video-user-name:hover{
+    text-decoration: none;
+    color: grey;
+}
+
+.account-video-tail-details{
+    display:flex;
+    flex-direction: row;
+}
+
+.account-video-views{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 14px;
+}
+
+.account-video-time{
+    font-family: Arial, Helvetica, sans-serif;
+    color:grey;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* ----------------------------Button----------------------------- */
+
+.button {
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right:0px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .blue-button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .blue-button:hover {
+    text-decoration: none;
+    background-color: #008CBA;
+    color: black;
+  }
+
+  .update-video-button{
+      margin-left: 2vw;
+  }
+
+  .delete-video-button {
+      margin-left: 0.5vw;
+  }
+
+/* ------------------------------------Video comments----------------------------- */
+
+.video-comments-count{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 2%;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.comment-body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 2%;
+    width: 75%;
+    margin-top: 2%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.fit {
+    object-fit: cover;
+}
+
+/* ------------------------------------Loading----------------------------- */
+
+/*
+
+div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(../logo/trustNet.png) no-repeat;
+    cursor: wait;
+    }
+*/

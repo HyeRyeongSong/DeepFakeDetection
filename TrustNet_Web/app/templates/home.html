@@ -1,0 +1,51 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+<head>
+    {% extends "layout.html" %}
+</head>
+
+<body>
+{% block content %}
+<div class="home-page-videos">
+    {% for video in videos %}
+    <div class="home-video-box">
+        <video class="home-video-view" controls>
+            <source src="{{ url_for('static', filename='videos/' + video.video_content) }}" type="video/mp4">
+        </video>
+
+        <div class="home-video-image-title">
+            <div class="home-video-user-image-box">
+                <img src="{{ url_for('static', filename='avatar/' + video.author.avatar) }}" alt="Avatar"
+                     class="home-video-user-image">
+            </div>
+            <div class="home-video-title-user">
+                <a class="home-video-title" href="{{ url_for('video', id=video.id) }}">
+                    {{ video.video_title }}
+                </a>
+                <br>
+                <a class="home-video-user-name" href="{{ url_for('account')}}">{{ video.author.user_name }}</a>
+            </div>
+        </div>
+        <div class="home-video-tail-details">
+            <span class="home-video-views"> 286,801 views </span>
+            <span class="home-video-time">•{{ video.upload_time.strftime('%Y-%m-%d') }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p class="text-center">Copyright &copy; 2020 <a href="https://swmaestro.org" target="_blank">TrustNet Team</a>. All Rights Reserved.<br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+</body>
+
+</html>

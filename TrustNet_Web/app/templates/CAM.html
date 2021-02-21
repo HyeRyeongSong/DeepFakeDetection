@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+    <div id="wrapper">
+        <div id="slider-wrap">
+            <img src="">
+            <p id="numberCAM"></p>
+        </div>
+    </div>
+    <style>
+        #wrapper{
+            width: auto;
+            height: 416px;
+            position:relative;
+        }
+        
+        #slider-wrap{
+            height: 416px;
+            width: 416px;
+            position:relative;
+            margin: 0 auto
+        }
+        
+        #slider-wrap > p{
+            position:relative;
+            text-align: center;
+        }
+    </style>
+    <script  type="text/javascript">
+        var autoSlider = setInterval(Right, 3000);
+        var index = 0;
+        var Path = [];
+        {% for img in images %}
+            Path.push("{{ url_for('static', filename='deepfake/' + id + '/' + img) }}")
+        {% endfor %}
+        function Right(){
+            document.getElementById('slider-wrap').firstElementChild.setAttribute("src", Path[index]);
+            document.getElementById('numberCAM').innerHTML = `< ${index + 1} / ${Path.length} >`
+            index = (index + 1) % Path.length;
+        }
+    </script>
+{% endblock content %}

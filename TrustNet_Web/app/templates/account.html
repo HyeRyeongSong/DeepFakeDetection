@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    {% extends "layout.html" %}
+</head>
+
+<body>
+{% block content %}
+<div class="profile-cover">
+    <p>
+    <center>Profile cover here</center>
+    </p>
+</div>
+
+<div class="user-details">
+    <img src="{{ avatar }}" alt="Avatar" class="user-profile-image">
+    <div>
+        <p class="user-profile-name">{{ current_user.user_name }}</h1>
+        <p class="user-profile-subscriber"> 1.2M Subscribers </p>
+    </div>
+</div>
+
+<div class="update-account-form">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <legend style="font-size: 2.5rem;" class="border-bottom mb-4">Account Info</legend>
+            <div class="form-group">
+                {{ form.user_name.label(class="form-control-label") }}
+
+                {% if form.user_name.errors %}
+                {{ form.user_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.user_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.user_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.avatar.label() }}
+                {{ form.avatar(class="form-control-file") }}
+                {% if form.avatar.errors %}
+                {% for error in form.avatar.errors %}
+                <span class="text-danger">{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+<div class="account-page-videos">
+    {% for video in videos %}
+    <div class="account-video-box">
+        <video class="account-video-view" controls>
+            <source src="{{ url_for('static', filename='videos/' + video.video_content) }}" type="video/mp4">
+        </video>
+
+        <a class="account-video-title" href="{{ url_for('video', id=video.id) }}">
+            {{ video.video_title }}
+        </a>
+        <br>
+        <a class="account-video-user-name" href="{{ url_for('account')}}">
+            {{ video.author.user_name }}
+        </a>
+
+        <div class="account-video-tail-details">
+            <span class="account-video-views"> 286,000 views </span>
+            <span class="account-video-time">•{{ video.upload_time.strftime('%Y-%m-%d') }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+</body>
+
+</html>

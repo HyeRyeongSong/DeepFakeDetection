@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    {% extends "layout.html" %}
+</head>
+
+<body>
+<!-- Video view page -->
+{% block content %}
+<div>
+    <video class="video-view" autoplay controls>
+        <source src="{{ url_for('static', filename='videos/' + video.video_content) }}" type="video/mp4">
+    </video>
+</div>
+<p class="video-view-title">{{ video.video_title }}</p>
+<div class="video-view-tail-details">
+    <span class="video-view-views"> {{ video.views_count }} Views </span>
+    <span class="video-view-time">•{{ video.upload_time.strftime('%Y-%m-%d') }}</span>
+    <span style="margin-left: 2%;">
+            {% if current_user.is_authenticated %}
+            <span class="button blue-button like-anonymous"> {{ video.likes.count() }} likes </span>
+            <span class="button blue-button like-unlike-auth-user">
+                {% if current_user.has_liked_video(video) %}
+                <a class="unlike-button"
+                   href="{{ url_for('like_action', video_id=video.id, action='unlike') }}">Unlike</a>
+                {% else %}
+                <a class="like-button" href="{{ url_for('like_action', video_id=video.id, action='like') }}">Like</a>
+                {% endif %}
+            </span>
+            {% else %}
+            <p>{{ video.likes.count() }} likes </p>
+            {% endif %}
+        </span>
+
+    {% if video.author == current_user %}
+    <div>
+            <span><a class="button blue-button update-video-button" href="{{ url_for('update_video', id=video.id) }}">
+                    Update
+                </a></span>
+        <span></span><a class="button blue-button delete-video-button" href="#">
+        Delete
+    </a></span>
+    </div>
+    {% endif %}
+</div>
+
+<hr style="width: 1280px; margin-left: 2%;">
+
+<div class="video-view-user-details">
+    <img src="{{ url_for('static', filename='avatar/' + video.author.avatar) }}" alt="Avatar"
+         class="video-view-user-image">
+    <div>
+        <a class="video-view-user-name" href="{{ url_for('account')}}">{{ video.author.user_name }}</a>
+        <p class="video-view-subscriber"> 1.2M Subscribers </p>
+    </div>
+</div>
+
+<div class="video-view-description"> {{video.description}}</div>
+<br>
+<div style="margin-left: 2%;">
+        <span
+                style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Category:</span> {{video.category}}
+</div>
+<br>
+<hr style="width: 1280px; margin-left: 2%;">
+
+<p class="video-comments-count">
+    {{ video.comments.count() }} Comments
+</p>
+
+<!-- comment form -->
+{% if current_user.is_authenticated %}
+<div style="width:1280px; margin-left: 2%">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div style="display: flex; flex-direction: row;">
+            <div>
+                <img src="{{ url_for('static', filename='avatar/' + current_user.avatar) }}" alt="Avatar"
+                     class="video-view-user-image">
+            </div>
+
+            <div class='form-group' style="margin-top: 8px; margin-left: 10px; width:80%;">
+                {% if form.body.errors %}
+                {{ form.body(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.body.errors %}
+                    <span> {{ error }} </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.body(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+
+            <div class='form-group' style="margin-left: 20px; margin-top: 15px;">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+<!-- commment posts -->
+<div style="margin-bottom: 40px;;">
+    {% if video.comments %}
+    {% for comment in video.comments %}
+    <div class="comment-body"
+         style="display: flex; flex-direction: row; max-width: 1280px; margin-bottom: 0px; padding: 0px;">
+        <div>
+            <img src="{{ url_for('static', filename='avatar/' + comment.author.avatar) }}" alt="Avatar"
+                 class="video-view-user-image">
+        </div>
+        <div style="margin-left: 10px;">
+            <div style="display: flex; flex-direction: row; margin-top: 10px; margin-bottom: 0px;">
+                <p style="font-weight: bold;">{{comment.author.user_name}}</p>
+                <small style="margin-left: 20px; margin-top: 2px;;">
+                    posted on : {{comment.comment_time.strftime("%d %b, %Y") }}
+                </small>
+            </div>
+            <div>
+                <p style="margin-top: 0px; margin-bottom: 0px;">{{ comment.body }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
+</body>
+
+</html>

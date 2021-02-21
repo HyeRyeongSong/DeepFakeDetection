@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Custom stylesheet -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/main.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    {% if title %}
+    <title> {{ title }} - TrustTube</title>
+    {% else %}
+    <title>Welcome to TrustTube</title>
+    {% endif %}
+
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav class="navigation-bar">
+    <img src="../static/logo/sw_maestro.png" width=130 height=50>
+    <a class="youtube-logo" href="{{ url_for('home')}}">TrustTube</a>
+    <div>
+        {% if current_user.is_anonymous %}
+        <a class="navigation-link" href="{{ url_for('login')}}">Login</a>
+        <a class="navigation-link" href="{{ url_for('register')}}">Register</a>
+        {% else %}
+        <a class="navigation-link" href="{{ url_for('account')}}">{{ current_user.user_name}}</a>
+        <a class="navigation-link" href="{{ url_for('upload')}}">Upload</a>
+        <a class="navigation-link" href="{{ url_for('logout')}}">Logout</a>
+        {% endif %}
+    </div>
+</nav>
+
+<!-- Flashed Message Display -->
+{% with messages = get_flashed_messages(with_categories = true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div style="width:30%; margin-left: 35%; text-align: center;" class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- Contents -->
+{% block content %}{% endblock %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

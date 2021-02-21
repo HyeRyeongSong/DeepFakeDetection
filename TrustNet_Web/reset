@@ -1,0 +1,7 @@
+rm youtube.db
+cp .DB_reset.db youtube.db
+
+rm -rf ./app/static/videos
+mkdir ./app/static/videos
+
+touch ./app/static/videos/.gitkeep

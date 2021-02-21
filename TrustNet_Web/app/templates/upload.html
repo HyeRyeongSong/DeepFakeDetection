@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .container {
+        height: 800px;
+        position: relative;
+        <!--border: 3px solid blue;-->
+     }
+
+     .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    div#loading {
+        display: none;
+    }
+
+
+
+
+
+    </style>
+
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+    // ]]>
+
+
+
+    </script>
+</head>
+
+<body>
+<div id="loading">
+    <div class="container">
+        <div class="center">
+            <center>
+                <h2>딥페이크 요소를 찾아내는 중입니다</h2>
+                <div class="loader"></div>
+            </center>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div style="width:30%; margin-left: 35%; margin-top: 5%;">
+        <div>
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <fieldset class='form-group'>
+
+                    <center>
+                        <img src="../static/logo/trustNet.png" class="fit">
+                    </center>
+
+                    <legend style="text-align:center;"
+                            class='border-bottom mb-4 bg-primary text-light font-weight-bold'>
+                        {{legend}}
+                    </legend>
+                    <!--<h1 style="text-align:center;" class='border-bottom mb-4 bg-primary text-light font-weight-bold'> Upload Your Video </h1>-->
+
+                    <div class='form-group'>
+                        {{ form.video_title.label(class='form-control-label') }}
+
+                        {% if form.video_title.errors %}
+                        {{ form.video_title(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.video_title.errors %}
+                            <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.video_title(class='form-control form-control-lg') }}
+                        {% endif %}
+                    </div>
+
+                    <div class='form-group'>
+                        {{ form.description.label(class='form-control-label') }}
+
+                        {% if form.description.errors %}
+                        {{ form.description(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.description.errors %}
+                            <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.description(class='form-control form-control-lg') }}
+                        {% endif %}
+                    </div>
+
+                    <div class='form-group'>
+                        {{ form.category.label(class='form-control-label') }}
+
+                        {% if form.category.errors %}
+                        {{ form.category(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.category.errors %}
+                            <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.category(class='form-control form-control-lg') }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.video_content.label() }}
+                        {{ form.video_content(class="form-control-file") }}
+                        {% if form.video_content.errors %}
+                        {% for error in form.video_content.errors %}
+                        <span class="text-danger">{{ error }}</span> <!--</br>-->
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <center>
+                        <div class='form-group'>
+                            <button class='btn btn-outline-info' onclick="loading();">Upload</button>
+                            <!--{{ form.submit(class='btn btn-outline-info') }}-->
+                        </div>
+                    </center>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
